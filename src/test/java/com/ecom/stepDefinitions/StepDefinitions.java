@@ -12,11 +12,11 @@ public class StepDefinitions {
 	HomePage homePage;
 	LoginPage loginPage;
 	AccountPage accountPage;
-	PropReader propReader;
+	PropReader prop;
 
 	public StepDefinitions() {
 		homePage = new HomePage(Hooks.getDriver());
-		propReader = new PropReader("config.properties");
+		prop = new PropReader("config.properties");
 	}
 
 	@When("^I open automationpractice website$")
@@ -27,7 +27,7 @@ public class StepDefinitions {
 	@When("^I sign in$")
 	public void iSignIn() throws Throwable {
 		loginPage = homePage.signIn();
-		accountPage = loginPage.signInAs(propReader.getProperty("username"), propReader.getProperty("password"));
+		accountPage = loginPage.signInAs(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
 	@Then("^I sign out$")
